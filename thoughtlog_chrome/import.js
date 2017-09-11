@@ -32,7 +32,7 @@ var decodedCookie = decodeURIComponent(document.cookie);
 var ca = decodedCookie.split('=');
 var f=$.parseJSON(ca[1])
 var username= f["currentUser"]["username"]
-desc= "<a href="+url +"> "+ title+"</a>"
+desc= "<a href="+url +" > "+ title+" </a> "
 // console.
 
 myDataVar= {created_by: username  , description: desc}
