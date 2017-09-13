@@ -13,7 +13,7 @@
         vm.getThoughts = getThoughts;
         vm.deleteThought = deleteThought;
         vm.sanitizeHtml = sanitizeHtml;
-
+        __request_code=$scope.globals.currentUser
         function sanitizeHtml(text) {
             return $sce.trustAsHtml(text);
         };
