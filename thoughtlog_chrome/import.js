@@ -28,14 +28,16 @@ function process_bookmarks ( bookmarks ) {
 }
 
 function make_http_request(action, title, url){
-var decodedCookie = decodeURIComponent(document.cookie);
-var ca = decodedCookie.split('=');
-var f=$.parseJSON(ca[1])
-var username= f["currentUser"]["username"]
+// var decodedCookie = decodeURIComponent(document.cookie);
+// var ca = decodedCookie.split('=');
+// var f=$.parseJSON(ca[1])
+// var username= f["currentUser"]["username"]
+var username=__request_code.username
 desc= "<a href="+url +" > "+ title+" </a> "
 // console.
 
 myDataVar= {created_by: username  , description: desc}
+// console.log(myDataVar);
 $.ajax({
       type: "POST",
       url: action ,
