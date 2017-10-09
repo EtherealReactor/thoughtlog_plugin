@@ -33,7 +33,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active" id='thlink'><a href="#!/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-        <li class="active" id="bookmark"><a href="#!/"><span class="glyphicon glyphicon-home"></span> bookmark</a></li>
+        <li class="" id="addTab"><a href="#!/"><span class="glyphicon glyphicon-home"></span> bookmark</a></li>
         <!-- <li><a href="#!/about"><span class="glyphicon glyphicon-info-sign"></span> About us</a></li> -->
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -52,12 +52,11 @@
     </div> -->
     <div class="text-left container-fluid "> 
         <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
-        <div id='thoughts'>
-        <div ng-view></div>
+        <div id=''>
+        <div ng-view style="min-width: 100%; max-width: 100%; margin: 0px; width: 800px;"></div>
         </div>
-        <div class="row" id="bookmarkDiv" style="width:780px">
-</div>
-    </div>
+        
+        
       <!--
     <div class="col-sm-4 col-md-4 sidenav">
       <div class="row well">
@@ -81,7 +80,7 @@
 <footer class="container-fluid text-center footer">
   <p>ThoughtLog <span class='glyphicon glyphicon-copyright-mark'></span> <sub>Everything I think, I write down..! </sub></p>
 </footer>
-     <script src="import.js"></script>
+     
     <script src="assets/javascripts/jquery-3.1.1.min.js"></script>
     <script src="assets/javascripts/socket.io.min.js"></script>
     <script src="assets/javascripts/bootstrap.min.js"></script>
@@ -108,6 +107,7 @@
     <script src="controllers/login.controller.js"></script>
     <script src="controllers/register.controller.js"></script>
     <script src="controllers/thoughts_controller.js"></script>
+    <script src="import.js"></script>
 
 </body>
 </html>
