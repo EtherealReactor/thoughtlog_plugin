@@ -13,10 +13,25 @@
         vm.getThoughts = getThoughts;
         vm.deleteThought = deleteThought;
         vm.sanitizeHtml = sanitizeHtml;
+        vm.add_tabs= addTabs;
         __request_code=$scope.globals.currentUser
         function sanitizeHtml(text) {
             return $sce.trustAsHtml(text);
         };
+
+        function addTabs(){
+            var th=angular.element('input[id=url]')
+                console.log(th)
+
+                th.each(function(index, val){
+                    if (val.checked)
+                    {
+                        var thought ={description: val.value}
+                        console.log(thought)
+                        ThoughtsService.Create(thought, $scope.globals.currentUser)
+                    }
+                })
+        }
 
         function deleteThought(_id) {
             var flag = confirm("Are you sure want to delete thought?")
