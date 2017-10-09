@@ -1,3 +1,22 @@
+
+
+
+<nav class="navbar navbar-default" id='tabNav' style="display:none;">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#"  id="allTAbs">All open tabs</a></li>
+      <li><a href="#"  id="currTabs">>>Current Tab</a></li>
+      <li><a href="#" id="bookmark">>Import all bookmarks</a></li>
+    </ul>
+   </div>
+</nav>
+<div id='bookmarkOuterDiv'  style="display:none;">
+<form name="formBookmark" ng-submit="vm.add_tabs()" role="form" class="form-inline">
+          <div id='bookmarkDiv'></div>
+<button type="submit"class="btn btn-primary"><span class="glyphicon glyphicon glyphicon-plus"></span> Save</button>
+  </form>
+</div>
+          <div id='thoughts'>
 <label for="description">ADD A THOUGHT</label>
 
 <div class="row">
@@ -24,7 +43,7 @@
     </div>
 </div>
 
-<div class="row" id="thoughts">
+<div class="row" id="">
     <div class="col-sm-12">
     <div class="list-group row">
       <div class="list-group-item" ng-repeat="thought in thoughts | orderBy: '-created_at'">
@@ -74,3 +93,4 @@
  
 </script>
  -->
+ </div>
