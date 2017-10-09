@@ -10,14 +10,14 @@ function process_bookmarks ( bookmarks ) {
         if ( bookmark.url ) {
             // xmlhttp = make_xmlhttprequest("POST", "https://getpocket.com/v3/add", true)
             console.log( "Adding url: "+ bookmark.url );
-            make_http_request("http://ec2-35-154-178-237.ap-south-1.compute.amazonaws.com/api/thoughts", bookmark.title, bookmark.url)
+            // make_http_request("http://ec2-35-154-178-237.ap-south-1.compute.amazonaws.com/api/thoughts", bookmark.title, bookmark.url)
             chota_div = document.createElement('div')
             chota_div.innerHTML= "Added Url:  "+ bookmark.url;
             console.log(chota_div)
             //document.getElementById("progress").appendChild(chota_div)   
             // xmlhttp.send("consumer_key="+ consumer_key +"&" + __access_token_string +"&url="+ encodeURI(bookmark.url) + "&tags=ChromeBookmarks")
             document.getElementById("bookmarkDiv").innerHTML=document.getElementById("bookmarkDiv").innerHTML+ 
-            "<div> <input type='checkbox' name='book' checked > " + bookmark.title +"</input></div>"
+            "<div> <input type='checkbox' id='url' name='book' value='<a href="+encodeURI(bookmark.url)+" >"+ encodeURI(bookmark.title) +" </a>'checked > " + bookmark.title +"</input></div>"
         }
 
         if ( bookmark.children ) {
@@ -127,21 +127,63 @@ window.onload = function(){
     // chrome.bookmarks.getTree( process_bookmarks );
 };
 
-  document.getElementById("bookmark").addEventListener('click', addThis);
-  document.getElementById("thlink").addEventListener('click', showThought);
+  // document.getElementById("bookmark").addEventListener('click', addThis);
+  // document.getElementById("thlink").addEventListener('click', showThought);
+  // document.getElementById("currTabs").addEventListener('click', currentTab);
+  // document.getElementById("addTab").addEventListener('click', addTabs);
 
 function addThis(){
-    document.getElementById("bookmarkDiv").style.display="block";
+    console.log('cccc :: addThis' )
+    document.getElementById("bookmarkOuterDiv").style.display="block";
     document.getElementById("bookmarkDiv").innerHTML="";
+    document.getElementById("tabNav").style.display="block";
     chrome.bookmarks.getTree( process_bookmarks );
     document.getElementById("thoughts").style.display="none";
     
     
 }
+
+function addTabs(){
+    console.log('cccc :: addTabs' )
+    document.getElementById("bookmarkOuterDiv").style.display="block";
+    document.getElementById("tabNav").style.display="block";
+    document.getElementById("bookmarkDiv").innerHTML="";
+    document.getElementById("thoughts").style.display="none";
+    chrome.tabs.query({},function(tabs){     
+    console.log("\n/////////////////////\n");
+    tabs.forEach(function(tab){
+      console.log(tab.url);
+      chota_div = document.createElement('div')
+            chota_div.innerHTML= "Added Url:  "+ bookmark.url;
+            console.log(chota_div)
+            //document.getElementById("progress").appendChild(chota_div)   
+            // xmlhttp.send("consumer_key="+ consumer_key +"&" + __access_token_string +"&url="+ encodeURI(bookmark.url) + "&tags=ChromeBookmarks")
+            document.getElementById("bookmarkDiv").innerHTML=document.getElementById("bookmarkDiv").innerHTML+ 
+            "<div> <input type='checkbox'  id='url' name='book' value='<a href=\""+encodeURI(tab.url)+"\" >"+ escape(tab.title) +" </a>' checked > " + tab.title +"</input></div>"
+    });
+ }); 
+}
+
+function currentTab(){
+    console.log('cccc :: currenttab' )
+    var currenttab;
+    document.getElementById("bookmarkOuterDiv").style.display="block";
+    document.getElementById("tabNav").style.display="block";
+    document.getElementById("thoughts").style.display="none";
+    chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
+        currenttab = tabs[0].url;
+         document.getElementById("bookmarkDiv").innerHTML=document.getElementById("bookmarkDiv").innerHTML+ 
+            "<div> <input type='checkbox'  id='url' name='book' value='<a href=\""+encodeURI(tabs[0].url)+"\" >"+ escape(tabs[0].title) +" </a>' checked > " + tabs[0].title +"</input></div>"
+    });
+     
+}
+
+
 function showThought(){
     // chrome.bookmarks.getTree( process_bookmarks );
     document.getElementById("thoughts").style.display="block";
-    document.getElementById("bookmarkDiv").style.display="none";
+    document.getElementById("bookmarkOuterDiv").style.display="none";
+    document.getElementById("tabNav").style.display="block";
 
     
 }
@@ -156,3 +198,4 @@ function showThought(){
 //  contexts:["selection"],  // ContextType
 //  onclick: addThoughtapi // A callback function
 // });
+
