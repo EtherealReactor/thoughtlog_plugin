@@ -63,4 +63,26 @@
         });
     }
 
+
 })();
+
+$(document).on( "click", "#addTab", function() {
+    console.log('lllllllllllll')
+  addTabs();
+});
+$(document).on( "click", "#bookmark", function() {
+    console.log('lllllllllllll')
+  addThis();
+});
+$(document).on( "click", "#thlink", function() {
+    console.log('lllllllllllll')
+  showThought();
+});
+$(document).on( "click", "#currTabs", function() {
+  currentTab();
+});
+
+$(document).on( "click", "#allTAbs", function() {
+    console.log('lllllllllllll')
+  addTabs();
+});
