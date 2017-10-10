@@ -2,7 +2,7 @@
   "name": "ThoughtLog",
   "short_name": "ThoughtLog",
   "description": "log your thoughts",
-  "version": "0.1",
+  "version": "0.2",
   "manifest_version": 2,
   "browser_action": {
       "default_icon": "import.png",
