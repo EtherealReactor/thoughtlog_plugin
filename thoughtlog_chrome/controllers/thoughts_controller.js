@@ -31,6 +31,8 @@
                         ThoughtsService.Create(thought, $scope.globals.currentUser)
                     }
                 })
+                showThought();
+                getThoughts();
         }
 
         function deleteThought(_id) {
